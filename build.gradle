@@ -1,0 +1,61 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.4.RELEASE'
+    id 'java'
+    id 'war'
+}
+apply plugin: 'io.spring.dependency-management'
+group = 'com.pingfang'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: "idea"
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+    ext {
+        junitVersion = "4.11"
+        springVersion = "4.3.3.RELEASE"
+        jacksonVersion = "2.4.4"
+        compileJava.options.encoding = 'UTF-8'
+        compileTestJava.options.encoding = 'UTF-8'
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:2.0.4.RELEASE"
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR1'
+        }
+    }
+    //配置依赖
+    dependencies {
+        compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+        compile("org.springframework.boot:spring-boot-starter-web")
+        compile("org.springframework.boot:spring-boot-starter-tomcat")
+        compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+}
