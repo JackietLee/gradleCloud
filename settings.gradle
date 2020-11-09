@@ -1,4 +1,4 @@
 rootProject.name = 'gradletest'
 include 'eureka-server'
-include 'eureka-consumer'
+include 'eureka-provider'
 
