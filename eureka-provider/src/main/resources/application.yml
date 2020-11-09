@@ -1,8 +1,8 @@
 server:
-  port: 80
+  port: 8080
 eureka:
   instance:
-    hostname: peer1
+    hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/,http://peer2:1112/eureka/
