@@ -9,3 +9,7 @@ eureka:
 spring:
   application:
     name: ribbon-consumer
+
+management:
+  server:
+    port: 54001
