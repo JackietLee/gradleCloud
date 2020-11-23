@@ -1,6 +1,7 @@
 package com.pingfang.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.pingfang.controller.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,5 +20,15 @@ public class HelloService {
 
     public String helloFallback() {
         return "error";
+    }
+
+    @HystrixCommand(fallbackMethod = "defaultUser")
+    public User getUserById(long id) {
+        return restTemplate.getForObject("ht七p://HELLO-SERVICE/users/{1}",
+                User.class,id);
+    }
+
+    public User defaultUser() {
+        return new User();
     }
 }
