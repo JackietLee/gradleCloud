@@ -24,10 +24,10 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "defaultUser")
     public User getUserById(long id) {
-        return restTemplate.getForObject("ht七p://HELLO-SERVICE/users/{1}",
+        return restTemplate.getForObject("htp://HELLO-SERVICE/users/{1}",
                 User.class,id);
     }
-
+t
     public User defaultUser() {
         return new User();
     }
