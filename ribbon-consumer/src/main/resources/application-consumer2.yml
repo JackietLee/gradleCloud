@@ -1,0 +1,15 @@
+server:
+  port: 9001
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/
+spring:
+  application:
+    name: ribbon-consumer
+
+management:
+  server:
+    port: 54000

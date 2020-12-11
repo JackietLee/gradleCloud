@@ -5,7 +5,7 @@ eureka:
     hostname: peer1
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/
 spring:
   application:
     name: ribbon-consumer
