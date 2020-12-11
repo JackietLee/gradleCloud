@@ -22,7 +22,10 @@ public class HelloService {
     RestTemplate restTemplate;
 
     @CacheResult
-    @HystrixCommand(fallbackMethod = "helloFallback")
+    @HystrixCommand(fallbackMethod = "helloFallback",commandProperties = {
+            @HystrixProperty(name=
+                    "execution.timeout.enabled", value="false") //不启用超时熔断
+    })
     public String helloService() {
         return restTemplate.getForEntity("http://HELLO-SERVICE/hello",
                 String.class).getBody();
