@@ -2,4 +2,4 @@ rootProject.name = 'gradletest'
 include 'eureka-server'
 include 'eureka-provider'
 include 'ribbon-consumer'
-
+include 'hystrix-dashboard'
